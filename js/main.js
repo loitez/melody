@@ -9,6 +9,8 @@ $(document).ready(function () {
     var flatPath = $('.flats path')
     var viewFlatsButton = $('.view-flats');
     var modalDialog = $('.modal-dialog');
+    var menuIcon = $('.menu__icon');
+    var menu = $('.navbar__menu');
 
     floorPath.on('mouseover', function () {
         floorPath.removeClass('current-floor');
@@ -55,6 +57,7 @@ $(document).ready(function () {
 
     function toggleModal () {
         modal.toggleClass('is-open');
+        menuIcon.style.zIndex = "-9999";
     }
 
     function removeCurrentFlat () {
@@ -64,8 +67,13 @@ $(document).ready(function () {
 
     document.addEventListener('keydown', function (evt) {
         if (evt.keyCode === 27) {
-            toggleModal();
+            modal.removeClass('is-open');
         }
+    })
+
+    menuIcon.on('click', function () {
+        menu.toggleClass('active')
+
     })
 
     jQuery(function($){
